@@ -1,0 +1,25 @@
+package step01;
+
+public class Ex04Object {
+	public static void main(String[] args) {
+		/* B 객체가 내부적으로 생성되는 process
+		 *  보유한 모든 멤버변수들이 완벽하게 메모리에 생성되면 정상으로 객체 생성 완료
+		 *  B객체가 생성 완료되는 조건은 보유한 멤버변수들이 완벽하게 생성되는게 전체조건
+		 *  A객체가 완벽하게 생성 -B객체가 생성
+		 */
+	
+        B b = new B() ;
+        }
+      }
+	
+class A {
+	 A(){
+		  System.out.println("A");
+	 }
+}
+class B{
+ A a = new A() ;
+	 B(){
+		  System.out.println("B");
+	 }
+	}
