@@ -1,0 +1,16 @@
+package step04.pattern;
+
+public class Customer {
+	static Log4J Log = Log4J.getInstance();
+	//진정한 관리자가 admin 이라는 id값으로 login시 호출되는 메소드가 가정
+	//정상 실행이라 가정
+	public static void login() {
+		System.out.println(Log.info());
+	}
+	//관리자가 아님에도 고객이 관리자처럼 로그인 시도시 실행되는 메소드라 가정
+	public static void loginFail() {
+		System.out.println(Log.warn());
+	}
+	
+
+}
