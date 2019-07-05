@@ -1,0 +1,42 @@
+package step03;
+
+import model.domain.Student;//ctrl+shift+o
+
+public class Ex04Array {
+	
+	static Student[] studentArray() {
+		Student[] v = {new Student("유은나", 25), new Student("김경원", 30)};
+		return v;
+	}
+	/* ? printStudentName(Student[] v){}
+	 * 1. 배열 내부의 모든 학생들의 이름들만 출력
+	 * 2. 고려 사항
+	 * 		- name 변수는 직접적인 접근 불가 : private
+	 * 		- getName() 호출 가능 : public
+	 * 3. 제약 조건
+	 * 		- for문 활용 필수 
+	 */
+	
+	public static void main(String[] args) {
+		//?
+	}
+}
+/* 과제
+ * 1. 데이터 선택
+ * 	- DTO 클래스 개발
+ * 2. 해당  DTO 3개 이상의 데이터를 배열에 저장
+ * 3. 배열에 저장된 데이터값들을 출력
+ * 4. 구조 및 package명, class명
+ * 5. 제약조건 - 최적의 코드로 개발 하기
+ * 	1. 제시된 로직 완성
+ *  2. project명
+ *  	step01_apply
+ * 6.제출
+ * 	- 7월 4일 9시 5분까지
+ *  - 폴더 제공 예정
+ * 
+ */
+
+
+
+
