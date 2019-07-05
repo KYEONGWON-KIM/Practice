@@ -1,0 +1,22 @@
+package step04.pattern;
+
+public class Test {
+
+	public static void main(String[] args) {
+		//고객인데 admin 인양 로그인 상황이라 가정
+		//코드로 filtering
+		String admin = "admin";
+		String customer = "customer";
+		if(!customer.equals("admin")) {//!false -> true
+			Admin.loginFail();
+		}else {
+			Admin.login();
+		}
+		if(customer.equals("customer")) {
+			Customer.login();
+		}else {
+			Customer.loginFail();
+		}
+
+	}
+}
