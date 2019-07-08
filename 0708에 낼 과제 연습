@@ -55,8 +55,6 @@ public class Baseball {
 	
 }
 
-
-
 package model;
 
 import doamin.Baseball;
@@ -76,7 +74,7 @@ public class BaseballModel {
 		allData[6] = new Baseball("KIA", 0.412, 0.340);
 		allData[7]=  new Baseball("한화", 0.381, 0.3243); 
 		allData[8]=  new Baseball("롯데", 0.3731, 0.335);
-		index = 6 ;
+		index = 9 ;
 	}
 
 	public static boolean insert(Baseball v) {
@@ -140,10 +138,20 @@ public class BaseballModel {
 		}
 		return null;
 	}
+	public static boolean Last(String name) {
+		Baseball v = null;
+		for (int i = 0; i < allData.length; i++) {
+			v = allData[i];
+			if (v != null && v.getName().equals(name)) {
+				allData[i] = null;
+				return true;
+			}
+		}
+
+		return false;
+	}
 
 }
-
-
 
 package controller;
 
@@ -171,8 +179,12 @@ public class BaseballController {
 			}
 			
 		}else if(reqNumber ==4) {
-			BaseballModel.delete("두산");
-			EndView.printDelete("팀 삭제 완료");
+			Boolean r = BaseballModel.delete("두산");
+			if(r) {
+				EndView.printDelete("팀 삭제 완료");
+			}else{
+				EndView.printDelete("팀 삭제 안됨");
+			}
 		}else if(reqNumber ==5) {
 			EndView.printObc("롯데", 0.3243);
 			EndView.printObc("NC", 0.330);
@@ -181,22 +193,29 @@ public class BaseballController {
 			EndView.printWinrate("NC", 0.571);
 		}else {
 			EndView.printFail("요청하신 정보는 서비스 할 수 없습니다.");
-		
-		}
-	
+		}if (reqNumber == 7) {
+			EndView.printLast("추가 작업이 없으면 종료 합니다");
+	}
+    }
 }
-}
-
-
 
 package view;
 
 import controller.BaseballController;
 
 public class StartView {
-
 	public static void main(String[] args) {
-		
+		System.out.println("안녕하십니까^^ 야구 기록입니다.");
+		System.out.println("검색어를 입력하세요.");
+				String ID = "Bbb";
+				if(ID.equals("Bbb")) {
+		System.out.println(Log4J.getInstance().notice());
+		StartView.menu();
+	}else {
+		System.out.println(Log4J.getInstance().warning());
+	}
+	}
+		public static void menu() {
 		System.out.println("---모두검색 후 팀 추가----");
 		BaseballController.request(1);
 		BaseballController.request(3);
@@ -209,16 +228,19 @@ public class StartView {
 		BaseballController.request(6);
 		System.out.println("---팀 키움, LG, KT 검색----");
 		BaseballController.request(2);
-		
-    
-    
+		System.out.println("man");
+		BaseballController.request(7);
+		}
+     
+}
+
 package view;
 
 import doamin.Baseball;
 import model.BaseballModel;
 
 public class EndView {
-		
+	
 	public static void printAll(Baseball[] all) {
 		for(Baseball v : all) {
 			if(v!=null) {
@@ -258,20 +280,44 @@ public class EndView {
 				System.out.println("수정 불가");
 			}	
 		
+	
 	}
 	public static void printDelete(String msg) {
 		System.out.println(msg);
 			
 	}	
-			
+	public static void printLast(String msg) {
+		System.out.println(msg);
+		
+	}	
+		
+		
 	public static void printSuccess(String msg) {
 		System.out.println(msg);
 		
 	}
 	public static void printFail(String msg) {
-		System.out.println(msg);		
+		System.out.println(msg);
+		
 	}
+	
 	
 }
 
+package view;
 
+public class Log4J {
+	private static Log4J instance = new Log4J();
+	private Log4J() {}
+	public static Log4J getInstance() {
+		return instance;
+	}
+
+      public String notice() {
+	     return "환영합니다^^ 야구 기록입니다.";
+      }
+	public String warning() {
+		return "ID가 다릅니다";
+    }
+	
+	}
