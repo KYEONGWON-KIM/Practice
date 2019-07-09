@@ -1,0 +1,34 @@
+package model.domain;
+
+import lombok.Data;
+import lombok.ToString;
+
+@Data
+@ToString(includeFieldNames=false)
+public class Customer {
+  private String name;
+  @ToString.Exclude private int age;
+
+  
+@Override
+public String toString() {
+	return name;
+}
+}
+
+
+package test;
+
+import model.domain.Customer;
+
+public class Test {
+
+	public static void main(String[] args) {
+		Customer c = new Customer();
+		c.setName("롬복맨");
+		c.setAge(10);
+		System.out.println(c.getName());
+        
+	}
+
+}
