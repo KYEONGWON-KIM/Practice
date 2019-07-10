@@ -1,0 +1,41 @@
+package domain;
+
+import lombok.Data;
+
+
+@Data
+public class domain {
+	
+		private String model;
+		private int grade;
+	
+}
+
+package ExJson;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import net.sf.json.JSONObject;
+
+public class cake {
+
+	
+public static void main(String[] args) {
+	Map<String,Object>model = new HashMap<String,Object>();
+	ArrayList<Map<String,String>>list=new ArrayList<Map<String,String>>();
+	Map<String,String>cake;
+	cake = new HashMap<String,String>();
+	cake.put("빠리바게트", "4등");
+	cake.put("코스트코", "2등");
+	cake.put("이마트", "3등");
+	cake.put("베스킨라빈스", "1등");
+	
+	list.add(cake);
+	cake = null;
+	model.put("list", list);
+	JSONObject jsonObject = JSONObject.fromObject(model);
+	System.out.println(jsonObject);
+}
+}
