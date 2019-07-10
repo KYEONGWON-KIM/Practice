@@ -40,7 +40,7 @@ public static void main(String[] args) {
 	
 	rank.add(cake);
 	cake = null;
-	food.put("brand", rank);
+	food.put("Favorite stores", rank);
 	JSONObject jsonObject = JSONObject.fromObject(food);
 	System.out.println(jsonObject);
 	
